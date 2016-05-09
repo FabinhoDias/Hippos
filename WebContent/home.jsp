@@ -68,7 +68,7 @@
 						
 							<ul class="nav navbar-nav navbar-right">
 
-								<li><a><h:outputLabel value="#{telaPrincipalBean.nomeUser} "/></a></li>
+								<li><a><h:outputLabel value="#{telaPrincipalBean.nomeUser}"/></a></li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false"><span
