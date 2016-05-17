@@ -3,15 +3,14 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="bean.*" %>
+<%@ page import="bean.*"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <f:view>
 	<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<meta charset="utf-8">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -20,7 +19,7 @@
 <link rel="icon" href="../../favicon.ico">
 
 <title>HIPPOS</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -39,6 +38,10 @@
 
 <!-- Custom styles for this template -->
 <link href="css/carousel.css" rel="stylesheet">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div class="navbar-wrapper">
@@ -63,32 +66,44 @@
 							<li class="active"><a href="#">Pagina Inicial</a></li>
 							<li><a href="cardapio.jsp">Cardapio</a></li>
 							<li><a href="entregas.jsp">Entregas</a></li>
+
 						</ul>
+
+
 						<h:form>
-						
+
 							<ul class="nav navbar-nav navbar-right">
 
-								<li><a><h:outputLabel value="#{telaPrincipalBean.nomeUser}"/></a></li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle"
+								<li><a><h:outputLabel
+											value="#{telaPrincipalBean.nomeUser}" /></a></li>
+								<li class="dropdown"><a class="dropdown-toggle"
 									data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false"><span
 										class="glyphicon glyphicon-user"></span></a>
-									
-									<ul class="dropdown-menu">
-										<li class="dropdown-header">Login</li>
-										<li><h:inputText value="#{telaPrincipalBean.usuario.login }"/></li>
-										<li class="dropdown-header">Senha</li>
-										<li><h:inputSecret value = "#{telaPrincipalBean.usuario.senha }"/></li>
 
-										<li><a><h:commandButton actionListener="#{telaPrincipalBean.verifica}" value = "Entrar"  /></a></li>
+									<ul class="dropdown-menu">
+										<div class="container marketing">
+											<li class="dropdown-header">Login</li>
+											<li><h:inputText
+													value="#{telaPrincipalBean.usuario.login }" /></li>
+											<li class="dropdown-header">Senha</li>
+											<li><h:inputSecret
+													value="#{telaPrincipalBean.usuario.senha }" /></li> <br>
+											<li class="disabled"><h:commandButton
+													styleClass="btn btn-lg"
+													actionListener="#{telaPrincipalBean.verifica}"
+													value="Entrar" /></li>
+										</div>
 										<li role="separator" class="divider"></li>
 										<li><a href="cadastro.jsp">Cadastre-se</a></li>
-									</ul></li>
 
+
+									</ul></li>
 							</ul>
+
 						</h:form>
+
 					</div>
-				</div>
 				</nav>
 
 			</div>
@@ -114,8 +129,8 @@
 							<p>Delicioso sanduiche composto por uma mao de amor e varias
 								pitadas de carinho.</p>
 							<p>
-								<a class="btn btn-lg btn-primary" href="#" role="button">Confira
-									Aqui</a>
+								<a class="btn btn-lg btn-primary" href="cardapio.jsp"
+									role="button">Confira Aqui</a>
 							</p>
 						</div>
 					</div>
@@ -129,8 +144,8 @@
 							<p>Deliciosas cebolas que irao lhe enlouquecer com tanto
 								sabor</p>
 							<p>
-								<a class="btn btn-lg btn-primary" href="#" role="button">Confira
-									Aqui</a>
+								<a class="btn btn-lg btn-primary" href="cardapio.jsp"
+									role="button">Confira Aqui</a>
 							</p>
 						</div>
 					</div>
@@ -144,8 +159,8 @@
 							<p>Deliciosa pizza a moda da casa feita especialmente para
 								voce</p>
 							<p>
-								<a class="btn btn-lg btn-primary" href="#" role="button">Confira
-									Aqui</a>
+								<a class="btn btn-lg btn-primary" href="cardapio.jsp"
+									role="button">Confira Aqui</a>
 							</p>
 						</div>
 					</div>
@@ -181,9 +196,46 @@
 						preparado pela primeira vez da maneira como o conhecemos hoje em
 						fins do seculo XIX ou comeco do seculo XX.</p>
 					<p>
-						<a class="btn btn-default" href="#" role="button">Ver Detalhes
-							&raquo;</a>
+						<button class="btn btn-default" data-toggle="modal"
+							data-target="#hamburguer">Ver Detalhes &raquo;</button>
 					</p>
+
+					<div class="modal fade" id="hamburguer" role="dialog">
+						<div class="modal-dialog">
+
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Hamburguer</h4>
+								</div>
+								<div class="modal-body">
+									
+										<div class="row marketing">
+											<div class="col-lg-4">
+												<img class="img-circle" src="imagens/hamburguer.png"
+													width="140" height="140">
+											</div>
+											<div class="col-lg-8">
+												<p>As origens do hamburguer sao incertas e permeadas de
+													mitos e historias, porem e bem provavel que ele tenha sido
+													preparado pela primeira vez da maneira como o conhecemos
+													hoje em fins do seculo XIX ou comeco do seculo XX. O
+													hamburguer moderno e derivado das necessidades culinarias
+													de uma sociedade que mudava rapidamente devido a
+													industrializacao e, portanto, usufruiam de menos tempo para
+													o preparo de alimentos e consumo das refeicoes.</p>
+											</div>
+										</div>
+									
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">OK</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
 				</div>
 				<!-- /.col-lg-4 -->
 				<div class="col-lg-4">
@@ -194,9 +246,44 @@
 						Portugal como batatas fritas tipo "Pala-pala", em alusao a uma das
 						primeiras marcas comerciais a oferecer esta forma no mercado.</p>
 					<p>
-						<a class="btn btn-default" href="#" role="button">Ver Detalhes
-							&raquo;</a>
+						<button class="btn btn-default" data-toggle="modal"
+							data-target="#batataFrita">Ver Detalhes &raquo;</button>
 					</p>
+
+					<div class="modal fade" id="batataFrita" role="dialog">
+						<div class="modal-dialog">
+
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Batata Frita</h4>
+								</div>
+								<div class="modal-body">
+
+									<div class="row">
+										<div class="col-lg-4">
+											<img class="img-circle" src="imagens/fritas.png" width="140"
+												height="140">
+										</div>
+										<div class="col-lg-8">
+											<p>O termo batatas fritas refere-se ao produto da
+												preparacao culinaria de batatas cortadas previamente em
+												tiras, palitos finissimos (batata palha), rodelas ou folhas
+												e, posteriormente, fritas em oleo vegetal ou azeite. Ainda
+												se questiona a verdadeira origem da batata frita. A
+												discussao principal esta entre Belgica, Franca e Espanha.</p>
+										</div>
+									</div>
+
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">OK</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
 				</div>
 				<!-- /.col-lg-4 -->
 				<div class="col-lg-4">
@@ -209,17 +296,61 @@
 						de farinha de trigo, arroz ou grao-de-bico e as assavam em tijolos
 						quentes. A novidade foi parar na Etruria, na Italia.</p>
 					<p>
-						<a class="btn btn-default" href="#" role="button">Ver Detalhes
-							&raquo;</a>
+						<button class="btn btn-default" data-toggle="modal"
+							data-target="#pizza">Ver Detalhes &raquo;</button>
 					</p>
+
+					<div class="modal fade" id="pizza" role="dialog">
+						<div class="modal-dialog">
+
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Pizza</h4>
+								</div>
+								<div class="modal-body">
+
+									<div class="row">
+										<div class="col-lg-4">
+											<img class="img-circle" src="imagens/pizza.jpg" width="140"
+												height="140">
+										</div>
+										<div class="col-lg-8">
+											<p>Pizza (tambem grafada piza em Portugal) e uma
+												preparacao culinaria que consiste em um disco de massa
+												fermentada de farinha de trigo, coberto com molho de tomate
+												e os ingredientes variados que normalmente incluem algum
+												tipo de queijo, carnes preparadas ou defumadas e ervas,
+												normalmente oregano ou Manjericao, tudo assado em forno. A
+												historia da pizza comecou com os egipcios. Acredita-se que
+												eles foram os primeiros a misturar farinha com agua. Outros
+												afirmam que os primeiros foram os gregos, que faziam massas
+												a base de farinha de trigo, arroz ou grao-de-bico e as
+												assavam em tijolos quentes. A novidade foi parar na Etruria,
+												na Italia.</p>
+										</div>
+									</div>
+
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">OK</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
 				</div>
 				<!-- /.col-lg-4 -->
 			</div>
 			<!-- /.row -->
 
 			<div class="container marketing">
+
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="imagens/propaganda.mp4"></iframe>
+					<video autoplay loop class="embed-responsive-item"> <source
+						src="imagens/propaganda.mp4" type="video/mp4"></video>
 				</div>
 			</div>
 
@@ -296,24 +427,6 @@
 			</footer>
 
 		</div>
-		<!-- /.container -->
-
-
-		<!-- Bootstrap core JavaScript
-    ================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script>
-			window.jQuery
-					|| document
-							.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
-		</script>
-		<script src="js/bootstrap.min.js"></script>
-		<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-		<script src="../../assets/js/vendor/holder.min.js"></script>
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 	</body>
 </f:view>
 </html>
