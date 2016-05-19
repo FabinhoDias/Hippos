@@ -47,44 +47,44 @@
 						<label for="inputNome" class="sr-only">Nome Completo</label>
 						<p>
 							<span>Nome: </span>
-							<h:inputText id="inputNome" styleClass="form-control" />
+							<h:inputText id="inputNome" value="#{telaCadastroBean.usuario.nome}" styleClass="form-control" />
 						</p>
 						<p>
 							<span>Email: </span>
-							<h:inputText id="inputEmail" styleClass="form-control" />
+							<h:inputText id="inputEmail" value="#{telaCadastroBean.usuario.login}" styleClass="form-control" />
 						</p>
 						<p>
 							<span>Senha: </span>
-							<h:inputSecret id="inputPassword" styleClass="form-control" />
+							<h:inputSecret id="inputPassword" value="#{telaCadastroBean.usuario.senha}" styleClass="form-control" />
 						</p>
 						<p>
 							<span>Confirme a Senha: </span>
-							<h:inputSecret id="inputPassword2" styleClass="form-control" />
+							<h:inputSecret id="inputPassword2" value="#{telaCadastroBean.usuario.senha}" styleClass="form-control" />
 						</p>
 					</div>
 					<div class="col-lg-6">
 						<h2 class="form-signin-heading">Endereco:</h2>
 						<p>
-							<span>Rua: </span> <h:inputText id="inputRua" styleClass="form-control" />
+							<span>Rua: </span> <h:inputText id="inputRua" value="#{telaCadastroBean.usuario.endereco.rua}" styleClass="form-control" />
 						</p>
 						<p>
-							<span>Numero: </span> <h:inputText id="inputNumero"
+							<span>Numero: </span> <h:inputText id="inputNumero" value="#{telaCadastroBean.usuario.endereco.numeroDaCasa}"
 								styleClass="form-control" />
 						</p>
 						<p>
-							<span>Bairro: </span> <h:inputText id="inputBairro"
+							<span>Bairro: </span> <h:inputText id="inputBairro" value="#{telaCadastroBean.usuario.endereco.bairro}"
 								styleClass="form-control" />
 						</p>
 						<p>
-							<span>Cidade: </span> <h:inputText id="inputCidade"
+							<span>Cidade: </span> <h:inputText id="inputCidade" value="#{telaCadastroBean.usuario.endereco.cidade}"
 								styleClass="form-control" />
 						</p>
 						<p>
-							<span>Estado: </span> <h:inputText id="inputEstado"
+							<span>Estado: </span> <h:inputText id="inputEstado" value="#{telaCadastroBean.usuario.endereco.estado}"
 								styleClass="form-control" />
 						</p>
 						<p>
-							<span>Ponto de Referencia: </span> <h:inputText id="inputReferencia"
+							<span>Ponto de Referencia: </span> <h:inputText id="inputReferencia" value="#{telaCadastroBean.usuario.endereco.pontoDeReferencia}"
 								styleClass="form-control" />
 						</p>
 					</div>
@@ -92,8 +92,9 @@
 				<br>
 				<br>
 				<a href="home.jsp"><button
-								class="btn btn-lg btn-secondary" type="button">Voltar</button></a> <a><button
-								class="btn btn-lg btn-primary navbar-right" type="submit">Cadastrar</button></a>
+								class="btn btn-lg btn-secondary" type="button">Voltar</button></a> 
+								<a><h:commandButton actionListener="#{telaCadastroBean.verificaCadastro}"
+								styleClass="btn btn-lg btn-primary navbar-right" type="submit">Cadastrar</h:commandButton></a>
 					
 			</div>
 		</h:form>
