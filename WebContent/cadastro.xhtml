@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+
+<link rel="icon" href="../../favicon.ico" />
+
+<title>Cadastro</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+
+<link href="../../assets/css/ie10-viewport-bug-workaround.css"
+	rel="stylesheet" />
+
+<link href="css/signin.css" rel="stylesheet" />
+
+<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+<p:messages id="messages" showDetail="true" autoUpdate="true"
+	closable="true" />
+
+</h:head>
+<h:body>
+
+	<h:form>
+		<div class="container marketing">
+			<div class="row marketing">
+				<div class="col-lg-6">
+					<h2 class="form-signin-heading">Cadastre-se:</h2>
+					<label for="inputNome" class="sr-only">Nome Completo</label>
+					<p>
+						<span>Nome: </span>
+						<h:inputText id="inputNome"
+							value="#{telaCadastroBean.usuario.nome}"
+							styleClass="form-control" />
+					</p>
+					<p>
+						<span>Email: </span>
+						<h:inputText id="inputEmail"
+							value="#{telaCadastroBean.usuario.login}"
+							styleClass="form-control" />
+					</p>
+					<p>
+						<span>Senha: </span>
+						<h:inputSecret id="inputPassword"
+							value="#{telaCadastroBean.usuario.senha}"
+							styleClass="form-control" />
+					</p>
+					<p>
+						<span>Confirme a Senha: </span>
+						<h:inputSecret id="inputPassword2"
+							value="#{telaCadastroBean.usuario.senha}"
+							styleClass="form-control" />
+					</p>
+				</div>
+				<div class="col-lg-6">
+					<h2 class="form-signin-heading">Endereco:</h2>
+					<p>
+						<span>Rua: </span>
+						<h:inputText id="inputRua"
+							value="#{telaCadastroBean.endereco.rua}"
+							styleClass="form-control" />
+					</p>
+					<p>
+						<span>Numero: </span>
+						<h:inputText id="inputNumero"
+							value="#{telaCadastroBean.endereco.numeroDaCasa}"
+							styleClass="form-control" />
+					</p>
+					<p>
+						<span>Bairro: </span>
+						<h:inputText id="inputBairro"
+							value="#{telaCadastroBean.endereco.bairro}"
+							styleClass="form-control" />
+					</p>
+					<p>
+						<span>Cidade: </span>
+						<h:inputText id="inputCidade"
+							value="#{telaCadastroBean.endereco.cidade}"
+							styleClass="form-control" />
+					</p>
+					<p>
+						<span>Estado: </span>
+						<h:inputText id="inputEstado"
+							value="#{telaCadastroBean.endereco.estado}"
+							styleClass="form-control" />
+					</p>
+					<p>
+						<span>Ponto de Referencia: </span>
+						<h:inputText id="inputReferencia"
+							value="#{telaCadastroBean.endereco.pontoDeReferencia}"
+							styleClass="form-control" />
+					</p>
+				</div>
+			</div>
+			<br /> <br /> <a href="home.xhtml"><button
+					class="btn btn-lg btn-secondary" type="button">Voltar</button></a> <a><h:commandButton
+					action="#{telaCadastroBean.info}"
+					styleClass="btn btn-lg btn-primary navbar-right" value="Cadastrar" /></a>
+		</div>
+	</h:form>
+
+
+	<!-- /container -->
+
+
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+</h:body>
+
+</html>

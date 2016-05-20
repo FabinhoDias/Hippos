@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+
+	<link rel="icon" href="../../favicon.ico" />
+
+	<title>Entregas</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+
+	<link href="../../assets/css/ie10-viewport-bug-workaround.css"
+		rel="stylesheet" />
+
+	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+	<!-- Custom styles for this template -->
+	<link href="css/carousel.css" rel="stylesheet" />
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</h:head>
+<h:body style="background: url('imagens/planoDeFundo.jpg') repeat !important;">
+	<div class="navbar-wrapper">
+		<div class="container">
+
+			<nav class="navbar navbar-inverse navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar">sdads</span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+
+					<a class="navbar-brand" href="#"> <img alt=""
+						src="imagens/logo.png" width="150" height="30" align="top" /></a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="home.xhtml">Pagina Inicial</a></li>
+						<li><a href="cardapio.xhtml">Cardapio</a></li>
+						<li class="active"><a href="entregas.xhtml">Entregas</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"><h:outputLabel value="Seja Bemvindo(a)!" /></a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false"><span class="glyphicon glyphicon-log-out"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Sair</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</div>
+			</nav>
+
+		</div>
+	</div>
+
+	<div class="featurette-heading">
+		<div class="container">
+			<div class="thumbnail">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Pedido</th>
+							<th>Cliente</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Jose Francisco</td>
+							<td>Pendente</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Gorete Sales</td>
+							<td>Pendente</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Sabrina Soares</td>
+							<td>Entregue</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+
+</html>

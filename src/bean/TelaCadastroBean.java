@@ -40,7 +40,7 @@ public class TelaCadastroBean {
 	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces Rocks."));
 			
 		}
-		return "home.jsp";
+		return "home.xhtml";
 	}
 	
 	public void info() {
