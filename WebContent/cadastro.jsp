@@ -3,7 +3,7 @@
 <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="bean.*"%>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:p="http://primefaces.org/ui">
 <f:view>
 	<head>
 <meta charset="utf-8">
@@ -65,26 +65,26 @@
 					<div class="col-lg-6">
 						<h2 class="form-signin-heading">Endereco:</h2>
 						<p>
-							<span>Rua: </span> <h:inputText id="inputRua" value="#{telaCadastroBean.usuario.endereco.rua}" styleClass="form-control" />
+							<span>Rua: </span> <h:inputText id="inputRua" value="#{telaCadastroBean.endereco.rua}" styleClass="form-control" />
 						</p>
 						<p>
-							<span>Numero: </span> <h:inputText id="inputNumero" value="#{telaCadastroBean.usuario.endereco.numeroDaCasa}"
+							<span>Numero: </span> <h:inputText id="inputNumero" value="#{telaCadastroBean.endereco.numeroDaCasa}"
 								styleClass="form-control" />
 						</p>
 						<p>
-							<span>Bairro: </span> <h:inputText id="inputBairro" value="#{telaCadastroBean.usuario.endereco.bairro}"
+							<span>Bairro: </span> <h:inputText id="inputBairro" value="#{telaCadastroBean.endereco.bairro}"
 								styleClass="form-control" />
 						</p>
 						<p>
-							<span>Cidade: </span> <h:inputText id="inputCidade" value="#{telaCadastroBean.usuario.endereco.cidade}"
+							<span>Cidade: </span> <h:inputText id="inputCidade" value="#{telaCadastroBean.endereco.cidade}"
 								styleClass="form-control" />
 						</p>
 						<p>
-							<span>Estado: </span> <h:inputText id="inputEstado" value="#{telaCadastroBean.usuario.endereco.estado}"
+							<span>Estado: </span> <h:inputText id="inputEstado" value="#{telaCadastroBean.endereco.estado}"
 								styleClass="form-control" />
 						</p>
 						<p>
-							<span>Ponto de Referencia: </span> <h:inputText id="inputReferencia" value="#{telaCadastroBean.usuario.endereco.pontoDeReferencia}"
+							<span>Ponto de Referencia: </span> <h:inputText id="inputReferencia" value="#{telaCadastroBean.endereco.pontoDeReferencia}"
 								styleClass="form-control" />
 						</p>
 					</div>
@@ -93,8 +93,9 @@
 				<br>
 				<a href="home.jsp"><button
 								class="btn btn-lg btn-secondary" type="button">Voltar</button></a> 
-								<a><h:commandButton actionListener="#{telaCadastroBean.verificaCadastro}"
-								styleClass="btn btn-lg btn-primary navbar-right" type="submit">Cadastrar</h:commandButton></a>
+								<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+								<a><h:commandButton action="#{telaCadastroBean.showMessages}"
+								styleClass="btn btn-lg btn-primary navbar-right" value="Cadastrar"/></a>
 					
 			</div>
 		</h:form>
