@@ -64,30 +64,22 @@
 
 						<ul class="nav navbar-nav navbar-right">
 
+							<li><a href="perfilPrincipal.xhtml"><h:outputLabel
+										value="#{telaPrincipalBean.nomeDoUsuarioLogado}" /></a></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
+								aria-expanded="false"><span
+									class="glyphicon glyphicon-log-out"></span></a>
 
 								<ul class="dropdown-menu">
 									<div class="container marketing">
-										<li class="dropdown-header">Login</li>
-										<li><h:inputText
-												value="#{telaPrincipalBean.usuario.login }" /></li>
-										<li class="dropdown-header">Senha</li>
-										<li><h:inputSecret
-												value="#{telaPrincipalBean.usuario.senha }" /></li> <br />
 										<li class="disabled"><h:commandButton
-												styleClass="btn btn-lg"
-												actionListener="#{telaPrincipalBean.verifica}"
-												value="........ Entrar ........" /></li>
+												styleClass="btn btn-lg" value="........ Sair ........"
+												action="#{telaPrincipalBean.sairDoSistema}" /></li>
 									</div>
-									<li role="separator" class="divider"></li>
-									<li><a href="cadastro.xhtml">Cadastre-se</a></li>
-
 
 								</ul></li>
 						</ul>
-
 					</div>
 				</h:form>
 			</div>

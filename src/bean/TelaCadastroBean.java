@@ -36,7 +36,7 @@ public class TelaCadastroBean {
 			cadastrar();
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");
 	         
-	        //RequestContext.class.getCurrentInstance().showMessageInDialog(message);
+	        //RequestContext.getCurrentInstance().showMessageInDialog(message);
 	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces Rocks."));
 			
 		}
