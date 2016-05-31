@@ -30,6 +30,7 @@
 	<script src="js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
+
 	<div class="navbar-wrapper">
 		<div class="container">
 			<nav class="navbar navbar-inverse navbar-static-top">
@@ -55,7 +56,7 @@
 							<li><a><h:commandButton styleClass="btn btn-default"
 										value="Cardápio" action="#{telaPrincipalBean.navBarCardapio}" /></a></li>
 							<li><a><h:commandButton styleClass="btn btn-default"
-										action="#{telaPrincipalBean.navBarEntregas}" value="Entregas" /></a></li>
+										action="#{telaEntregasBean.navBarEntregas}" value="Entregas" /></a></li>
 
 						</ul>
 
@@ -76,10 +77,11 @@
 										<li class="dropdown-header">Senha</li>
 										<li><h:inputSecret
 												value="#{telaPrincipalBean.usuario.senha }" /></li> <br />
-										<li class="disabled"><h:commandButton
-												styleClass="btn btn-lg"
+										<p:growl id="message" showDetail="true" />
+										<li class="disabled"><p:commandButton
+												styleClass="btn btn-primary btn-lg btn-block"
 												actionListener="#{telaPrincipalBean.verifica}"
-												value="........ Entrar ........" /></li>
+												value="Entrar" update="message" /></li>
 									</div>
 									<li role="separator" class="divider"></li>
 									<li><a href="cadastro.xhtml">Cadastre-se</a></li>
@@ -212,10 +214,12 @@
 								</div>
 
 							</div>
+
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">OK</button>
 							</div>
+
 						</div>
 
 					</div>

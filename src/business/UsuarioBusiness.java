@@ -7,12 +7,12 @@ public class UsuarioBusiness {
 
 	UsuarioDAO dao = new UsuarioDAO();
 
-	public boolean validar(String login, String senha) {
+	public Usuario validar(String login, String senha) {
 		Usuario usuario = dao.verificaUsuario(login, senha);
 		if (usuario == null) {
-			return false;
+			return null;
 		} else {
-			return true;
+			return usuario;
 		}
 	}
 

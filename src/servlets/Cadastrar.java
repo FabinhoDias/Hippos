@@ -50,14 +50,14 @@ public class Cadastrar extends HttpServlet {
 		
 		UsuarioBusiness business = new UsuarioBusiness();
 		
-		if (business.validar(email, senha) == false) {
+		/*if (business.validar(email, senha) == false) {
 			Endereco endereco = new Endereco(rua, Integer.parseInt(numeroDaCasa), bairro, cidade, estado, pontoDeReferencia);
-			Usuario usuario = new Usuario(nome, email, senha, endereco);
-			business.salvar(usuario);
+			//Usuario usuario = new Usuario(nome, email, senha, endereco);
+			//business.salvar(usuario);
 			request.getRequestDispatcher("/home.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/modal.html").forward(request, response);
-		}
+		}*/
 		
 		
 		doGet(request, response);

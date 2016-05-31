@@ -56,7 +56,7 @@
 						<ul class="dropdown-menu">
 
 							<li class="disabled"><h:commandButton
-									styleClass="btn btn-lg" value="........ Sair ........"
+									styleClass="btn btn-primary btn-lg btn-block" value="Sair"
 									action="#{telaPrincipalBean.sairDoSistema}" /></li>
 
 
@@ -71,67 +71,55 @@
 		<div class="row">
 
 			<div class="col-sm-3 col-md-2 sidebar">
-
-				<ul class="nav nav-sidebar">
-					<li><a href="perfilPrincipal.xhtml">Perfil <span
-							class="sr-only">(current)</span></a></li>
-					<li class="active"><a href="perfilHistorico.xhtml">Historico</a></li>
-					<li><a href="home.xhtml">Excluir Conta</a></li>
-				</ul>
+				<h:form>
+					<ul class="nav nav-sidebar">
+						<li class="disabled"><a><h:commandButton value="Perfil"
+									styleClass="btn btn-primary btn-lg btn-block"
+									action="#{telaEntregasBean.abaPerfil}" /> <span
+								class="sr-only">(current)</span></a></li>
+						<li class="disabled"><a><h:commandButton
+									value="Historico" styleClass="btn btn-primary btn-lg btn-block"
+									action="#{telaEntregasBean.abaHistorico}" /></a></li>
+					</ul>
+					<ul class="nav nav-sidebar">
+						<li class="disabled"><a> <h:commandButton
+									value="Excluir Conta" styleClass="btn btn-lg btn-block"
+									action="#{telaEntregasBean.excluirConta}" /></a></li>
+					</ul>
+				</h:form>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">Historico dos Pedidos</h1>
 
 				<h4 class="sub-header">Lista dos Pedidos</h4>
 				<div class="table-responsive">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>Numero</th>
-								<th>Valor</th>
-								<th>Data</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1,001</td>
-								<td>Lorem</td>
-								<td>ipsum</td>
-								<td>dolor</td>
-							</tr>
-							<tr>
-								<td>1,002</td>
-								<td>amet</td>
-								<td>consectetur</td>
-								<td>adipiscing</td>
-							</tr>
-							<tr>
-								<td>1,003</td>
-								<td>Integer</td>
-								<td>nec</td>
-								<td>odio</td>
-							</tr>
-							<tr>
-								<td>1,003</td>
-								<td>libero</td>
-								<td>Sed</td>
-								<td>cursus</td>
-							</tr>
-							<tr>
-								<td>1,004</td>
-								<td>dapibus</td>
-								<td>diam</td>
-								<td>Sed</td>
-							</tr>
-							<tr>
-								<td>1,005</td>
-								<td>Nulla</td>
-								<td>quis</td>
-								<td>sem</td>
-							</tr>
-						</tbody>
-					</table>
+					<h:dataTable styleClass="table table-hover" var="historico"
+						value="#{telaEntregasBean.historico}" border="1" width="100%">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Pedido" />
+							</f:facet>
+							<h:outputText value="#{historico.id}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Cliente" />
+							</f:facet>
+							<h:outputText value="#{historico.nomeUsuario}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Data" />
+							</f:facet>
+							<h:outputText value="#{historico.data.date}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Status" />
+							</f:facet>
+							<h:outputText value="#{historico.status}" />
+						</h:column>
+					</h:dataTable>
 				</div>
 
 			</div>

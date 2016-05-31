@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import conexaoBD.HibernateUtil;
 import domain.Pedido;
+import domain.Produto;
 import domain.Usuario;
 
 public class PedidoDAO {
@@ -52,6 +53,24 @@ public class PedidoDAO {
 
 		return verifica;
 	}
+	
+	public boolean atualizarPedido(Pedido pedido) {
+
+		if (!session.isOpen())
+			session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		boolean verifica = true;
+		try {
+			session.update(pedido);
+		} catch (Exception e) {
+			verifica = false;
+		}
+		session.flush();
+		tx.commit();
+		session.close();
+
+		return verifica;
+	}
 
 	public Pedido buscarPedido(int id) {
 
@@ -87,6 +106,23 @@ public class PedidoDAO {
 		session.close();
 
 		return pedido;
+	}
+	
+	@SuppressWarnings({ "unchecked" })
+	public List<Pedido> listaDePedidosDoUsuario(String nome) {
+
+		if (!session.isOpen())
+			session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction tx = session.beginTransaction();
+
+		List<Pedido> pedidos = session.createQuery("from Pedido where nomeUsuario='" + nome + "'").list();
+
+		session.flush();
+		tx.commit();
+		session.close();
+
+		return pedidos;
 	}
 
 	@SuppressWarnings({ "unchecked" })

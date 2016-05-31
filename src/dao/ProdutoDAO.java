@@ -25,6 +25,7 @@ public class ProdutoDAO {
 			session.save(produto);
 		} catch (Exception e) {
 			verifica = false;
+			e.printStackTrace();
 		}
 		session.flush();
 		tx.commit();

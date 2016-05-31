@@ -16,6 +16,14 @@ public class PedidoBusiness {
 	public boolean excluir(Pedido pedido) {
 		return dao.removerPedido(pedido);
 	}
+	
+	public boolean atualizar(Pedido pedido) {
+		return dao.atualizarPedido(pedido);
+	}
+	
+	public List<Pedido> getListaDePedidosDoUsuario(String nome) {
+		return dao.listaDePedidosDoUsuario(nome);
+	}
 
 	public List<Pedido> getListaDePedidos() {
 		return dao.listaDePedidos();

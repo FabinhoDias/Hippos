@@ -30,7 +30,12 @@
 	<script src="js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
-
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		<p:commandButton value="Sim" type="button"
+			styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		<p:commandButton value="Não" type="button"
+			styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+	</p:confirmDialog>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -55,7 +60,7 @@
 
 						<ul class="dropdown-menu">
 							<li class="disabled"><h:commandButton
-									styleClass="btn btn-lg" value="........ Sair ........"
+									styleClass="btn btn-primary btn-lg btn-block" value="Sair"
 									action="#{telaPrincipalBean.sairDoSistema}" /></li>
 						</ul></li>
 				</ul>
@@ -66,17 +71,32 @@
 
 	<div class="container-fluid">
 		<div class="row">
+			<h:form>
+				<div class="col-sm-3 col-md-2 sidebar">
 
-			<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<li class="disabled"><a><h:commandButton value="Perfil"
+									styleClass="btn btn-primary btn-lg btn-block"
+									action="#{telaEntregasBean.abaPerfil}" /> <span
+								class="sr-only">(current)</span></a></li>
+						<li class="disabled"><a><h:commandButton
+									value="Historico" styleClass="btn btn-primary btn-lg btn-block"
+									action="#{telaEntregasBean.abaHistorico}" /></a></li>
+					</ul>
+					<ul class="nav nav-sidebar">
+						<li class="disabled"><a> <p:commandButton
+									value="Excluir Conta" styleClass="btn btn-lg btn-block"
+									action="#{telaEntregasBean.excluirConta}">
+									<p:confirm header="Confimação"
+										message="Deseja realmente apagar sua conta?"
+										icon="ui-icon-alert" />
+								</p:commandButton>
+						</a></li>
 
-				<ul class="nav nav-sidebar">
-					<li class="active"><a href="perfilPrincipal.xhtml">Perfil
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li><a href="perfilHistorico.xhtml">Historico de Pedidos</a></li>
-					<li><a href="home.xhtml">Excluir Conta</a></li>
-				</ul>
-			</div>
+					</ul>
+				</div>
+
+			</h:form>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">Informações do Perfil</h1>
 
@@ -86,17 +106,37 @@
 							class="img-responsive" alt="Generic placeholder thumbnail" />
 						<h4>Nome</h4>
 						<h:outputLabel styleClass="text-muted"
-							value="#{telaPrincipalBean.nomeDoUsuarioLogado}" />
+							value="#{telaPrincipalBean.usuario.nome}" />
+
 					</div>
 
-					<div class="col-xs-6 col-sm-5 placeholder">
+					<div class="col-xs-6 col-sm-4 placeholder">
 						<ul>
-							<li class="list-group-item">Rua: <h:inputText /></li>
-							<li class="list-group-item">Numero: <h:inputText /></li>
-							<li class="list-group-item">Bairro: <h:inputText /></li>
-							<li class="list-group-item">Cidade: <h:inputText /></li>
-							<li class="list-group-item">Estado: <h:inputText /></li>
-							<li class="list-group-item">Pronto de Referencia: <h:inputText /></li>
+							<li class="list-group-item">Rua: <h:inputText
+									styleClass="form-control"
+									value="#{telaPrincipalBean.usuario.endereco.rua}" /></li>
+							<li class="list-group-item">Numero: <h:inputText
+									styleClass="form-control"
+									value="#{telaPrincipalBean.usuario.endereco.numeroDaCasa}" /></li>
+							<li class="list-group-item">Pronto de Referencia: <h:inputText
+									styleClass="form-control"
+									value="#{telaPrincipalBean.usuario.endereco.pontoDeReferencia}" /></li>
+						</ul>
+
+					</div>
+
+					<div class="col-xs-6 col-sm-4 placeholder">
+						<ul>
+
+							<li class="list-group-item">Bairro: <h:inputText
+									styleClass="form-control"
+									value="#{telaPrincipalBean.usuario.endereco.bairro}" /></li>
+							<li class="list-group-item">Cidade: <h:inputText
+									styleClass="form-control"
+									value="#{telaPrincipalBean.usuario.endereco.cidade}" /></li>
+							<li class="list-group-item">Estado: <h:inputText
+									styleClass="form-control"
+									value="#{telaPrincipalBean.usuario.endereco.estado}" /></li>
 						</ul>
 
 					</div>

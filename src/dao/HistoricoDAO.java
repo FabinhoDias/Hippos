@@ -1,27 +1,49 @@
 package dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+
 import conexaoBD.HibernateUtil;
+import domain.Historico;
 import domain.Usuario;
 
-public class UsuarioDAO {
-
+public class HistoricoDAO {
+ 
 	private Session session;
 
-	public UsuarioDAO() {
+	public HistoricoDAO() {
 		this.session = HibernateUtil.getSessionFactory().openSession();
 	}
 
-	public boolean salvarUsuario(Usuario usuario) {
+	public boolean salvarHistorico(Historico historico) {
 
 		if (!session.isOpen())
 			session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		boolean verifica = true;
 		try {
-			session.save(usuario);
+			session.save(historico);
+		} catch (Exception e) {
+			verifica = false;
+		}
+		session.flush();
+		tx.commit();
+		session.close();
+
+		return verifica;
+	}
+
+	public boolean removerHistorico(Historico historico) {
+
+		if (!session.isOpen())
+			session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		boolean verifica = true;
+		try {
+			session.delete(historico);
 		} catch (Exception e) {
 			verifica = false;
 		}
@@ -32,14 +54,14 @@ public class UsuarioDAO {
 		return verifica;
 	}
 	
-	public boolean removerUsuario(Usuario usuario) {
+	public boolean atualizarHistorico(Historico historico) {
 
 		if (!session.isOpen())
 			session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		boolean verifica = true;
 		try {
-			session.delete(usuario);
+			session.update(historico);
 		} catch (Exception e) {
 			verifica = false;
 		}
@@ -49,80 +71,56 @@ public class UsuarioDAO {
 
 		return verifica;
 	}
-	
-	public boolean atualizarUsuario(Usuario usuario) {
+
+	public Historico buscarHistorico(int id) {
 
 		if (!session.isOpen())
 			session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
-		boolean verifica = true;
+		Historico historico = null;
 		try {
-			session.update(usuario);
+			historico = (Historico) session.createCriteria(Historico.class).add(Restrictions.eq("id", id)).uniqueResult();
+			session.flush();
+			tx.commit();
 		} catch (Exception e) {
-			verifica = false;
 		}
+
+		session.close();
+
+		return historico;
+	}
+	
+	public Historico buscarHistorico(Usuario usuario) {
+
+		if (!session.isOpen())
+			session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		Historico historico = null;
+		try {
+			historico = (Historico) session.createCriteria(Historico.class).add(Restrictions.eq("usuario", usuario)).uniqueResult();
+			session.flush();
+			tx.commit();
+		} catch (Exception e) {
+		}
+
+		session.close();
+
+		return historico;
+	}
+
+	@SuppressWarnings({ "unchecked" })
+	public List<Historico> listaDeHistoricos() {
+
+		if (!session.isOpen()) {
+			session = HibernateUtil.getSessionFactory().openSession();
+		}
+		Transaction tx = session.beginTransaction();
+		List<Historico> historicos = session.createQuery("FROM Historico ORDER BY id asc").list();
 		session.flush();
 		tx.commit();
 		session.close();
 
-		return verifica;
+		return historicos;
 	}
-	
-	public Usuario verificaUsuario(String login, String senha) {
-		
-		if(!session.isOpen())
-			session = HibernateUtil.getSessionFactory().openSession();
-		Transaction tx = session.beginTransaction();
-		Usuario usuario = null;
-		try {
-			usuario = (Usuario) session.createQuery("from Usuario where login='"+login+"' and senha='"+senha+"'").list().get(0);
-			session.flush();
-			tx.commit();
-			//System.out.println(usuario.getNome());
-		} catch (RuntimeException e) {
-			e.printStackTrace();
-		}
-			
-			session.close();
-		
-		
-		return usuario;
-	}
-	
-	public Usuario buscarUsuario(int id){
-		
-		if(!session.isOpen())
-			session = HibernateUtil.getSessionFactory().openSession();
-		Transaction tx = session.beginTransaction();
-		Usuario usuario = null;
-		try {
-			usuario = (Usuario) session.createCriteria(Usuario.class).add(Restrictions.eq("id", id)).uniqueResult();
-			session.flush();
-			tx.commit();
-		} catch (Exception e) {
-		}
-		
-		session.close();
-		
-		return usuario;
-	}
-	
-	public Usuario buscarUsuario(String login){
-		
-		if(!session.isOpen())
-			session = HibernateUtil.getSessionFactory().openSession();
-		Transaction tx = session.beginTransaction();
-		Usuario usuario = null;
-		try {
-			usuario = (Usuario) session.createCriteria(Usuario.class).add(Restrictions.eq("login", login)).uniqueResult();
-			session.flush();
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		session.close();
-		
-		return usuario;
-	}
+
 }

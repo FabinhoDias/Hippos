@@ -10,5 +10,11 @@
 		<managed-bean-class>bean.TelaPrincipalBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>telaCardapioBean</managed-bean-name>
+		<managed-bean-class>bean.TelaCardapioBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

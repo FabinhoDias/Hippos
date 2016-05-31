@@ -6,30 +6,29 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
 
-<link rel="icon" href="../../favicon.ico" />
+	<link rel="icon" href="../../favicon.ico" />
 
-<title>Cadastro</title>
+	<title>Cadastro</title>
 
-<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
 
-<link href="../../assets/css/ie10-viewport-bug-workaround.css"
-	rel="stylesheet" />
+	<link href="../../assets/css/ie10-viewport-bug-workaround.css"
+		rel="stylesheet" />
 
-<link href="css/signin.css" rel="stylesheet" />
+	<link href="css/signin.css" rel="stylesheet" />
 
-<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-<p:messages id="messages" showDetail="true" autoUpdate="true"
-	closable="true" />
+	<p:messages id="messages" showDetail="true" autoUpdate="true"
+		closable="true" />
 
 </h:head>
 <h:body>
-
 	<h:form>
 		<div class="container marketing">
 			<div class="row marketing">
@@ -101,10 +100,23 @@
 					</p>
 				</div>
 			</div>
-			<br /> <br /> <a href="home.xhtml"><button
-					class="btn btn-lg btn-secondary" type="button">Voltar</button></a> <a><h:commandButton
-					action="#{telaCadastroBean.info}"
-					styleClass="btn btn-lg btn-primary navbar-right" value="Cadastrar" /></a>
+			<br /> <br />
+			<h:form>
+				<p:growl id="growl" showDetail="true" sticky="true" />
+				<a href="home.xhtml"><button class="btn btn-lg btn-secondary"
+						type="button">Voltar</button></a>
+				<a><p:commandButton
+						action="#{telaCadastroBean.verificaCadastro}"
+						styleClass="btn btn-lg btn-primary navbar-right" value="Cadastrar"
+						update="growl">
+						<p:confirm header="Parabéns"
+							message="Usuário cadastrado com sucesso" icon="ui-icon-alert" />
+					</p:commandButton> 
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="OK" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					</p:confirmDialog></a>
+			</h:form>
 		</div>
 	</h:form>
 

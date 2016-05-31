@@ -6,12 +6,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.html.HTMLWriter;
-
-import org.apache.tomcat.util.http.fileupload.RequestContext;
 
 import business.UsuarioBusiness;
 import domain.Endereco;
@@ -26,21 +20,20 @@ public class TelaCadastroBean {
 	private UsuarioBusiness business = new UsuarioBusiness();
 	private int status;
 	
-	public String verificaCadastro() {
+	public void verificaCadastro() throws IOException {
 		
-		boolean verifica = business.validar(usuario.getLogin(), usuario.getSenha());
-		if (verifica) {
+		Usuario verificaUsuario = business.validar(usuario.getLogin(), usuario.getSenha());
+		if (verificaUsuario != null) {
 			//showMessages()
 			System.out.println("Passou aqui!");
 		} else {
 			cadastrar();
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");
-	         
-	        //RequestContext.getCurrentInstance().showMessageInDialog(message);
-	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces Rocks."));
+			
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.getExternalContext().redirect("home.xhtml");
+	        //context.addMessage(null, new FacesMessage("Parabéns",  "Usuário cadastrado com sucesso") );
 			
 		}
-		return "home.xhtml";
 	}
 	
 	public void info() {

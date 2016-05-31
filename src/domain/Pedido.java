@@ -1,11 +1,14 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -16,49 +19,75 @@ import javax.persistence.Table;
 public class Pedido {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Usuario usuario;
-	
-	@OneToMany (cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany (mappedBy="id", cascade = {CascadeType.PERSIST, CascadeType.MERGE }, fetch=FetchType.LAZY)
 	private List<Produto> produtos;
-	private boolean status;
+	
+	private String nomeUsuario;
+	
+	private Date data; 
+	
+	private String status;
 	
 	public Pedido() {
 		
 	}
-	
-	public Pedido(Usuario usuario, List<Produto> produtos, boolean status) {
+
+	public Pedido(List<Produto> produtos, String nomeUsuario, Date data, String status) {
 		super();
-		this.usuario = usuario;
 		this.produtos = produtos;
+		this.nomeUsuario = nomeUsuario;
+		this.data = data;
 		this.status = status;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+
 	public List<Produto> getProdutos() {
+		if (this.produtos == null) {
+			this.produtos = new ArrayList<Produto>();
+		}
 		return produtos;
 	}
+
 	public void setProdutos(List<Produto> produtos) {
+		if (this.produtos == null) {
+			this.produtos = new ArrayList<Produto>();
+		}
 		this.produtos = produtos;
 	}
-	public boolean isStatus() {
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(boolean status) {
+
+	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public String getNomeUsuario() {
+		return nomeUsuario;
+	}
+
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
+	}
+	
+	
 }

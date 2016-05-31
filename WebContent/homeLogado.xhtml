@@ -55,7 +55,7 @@
 							<li><a><h:commandButton styleClass="btn btn-default"
 										value="Cardápio" action="#{telaPrincipalBean.navBarCardapio}" /></a></li>
 							<li><a><h:commandButton styleClass="btn btn-default"
-										action="#{telaPrincipalBean.navBarEntregas}" value="Entregas" /></a></li>
+										action="#{telaEntregasBean.navBarEntregas}" value="Entregas" /></a></li>
 
 						</ul>
 
@@ -65,7 +65,7 @@
 						<ul class="nav navbar-nav navbar-right">
 
 							<li><a href="perfilPrincipal.xhtml"><h:outputLabel
-										value="#{telaPrincipalBean.nomeDoUsuarioLogado}" /></a></li>
+										value="#{telaPrincipalBean.usuario.nome}" /></a></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false"><span
@@ -74,7 +74,7 @@
 								<ul class="dropdown-menu">
 									<div class="container marketing">
 										<li class="disabled"><h:commandButton
-												styleClass="btn btn-lg" value="........ Sair ........"
+												styleClass="btn btn-primary btn-lg btn-block" value="Sair"
 												action="#{telaPrincipalBean.sairDoSistema}" /></li>
 									</div>
 

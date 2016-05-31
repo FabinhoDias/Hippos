@@ -26,6 +26,7 @@
 		<mapping class="domain.Pedido" />
 		<mapping class="domain.Endereco" />
 		<mapping class="domain.Curiosidade" />
+		<mapping class="domain.Historico" />
 
 	</session-factory>
 </hibernate-configuration>

@@ -1,8 +1,9 @@
 package bean;
 
 import java.io.IOException;
-import javax.faces.context.FacesContext;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import business.UsuarioBusiness;
 import domain.Usuario;
 import service.Sessao;
@@ -11,9 +12,6 @@ public class TelaPrincipalBean {
 
 	private Usuario usuario;
 	private UsuarioBusiness business = new UsuarioBusiness();
-	private String nomeDoUsuarioLogado = "";
-
-	private String navBar = "P";
 
 	public TelaPrincipalBean() {
 		usuario = new Usuario();
@@ -22,33 +20,31 @@ public class TelaPrincipalBean {
 	public void verifica() throws IOException {
 		System.out.println(usuario.getLogin());
 		System.out.println(usuario.getSenha());
-		boolean verifica = business.validar(usuario.getLogin(), usuario.getSenha());
-		if (verifica) {
-			usuario = business.getUsuario(usuario.getLogin());
-			nomeDoUsuarioLogado = usuario.getNome();
+		Usuario verificaUsuario = business.validar(usuario.getLogin(), usuario.getSenha());
+		if (verificaUsuario != null) {
+			//usuario = business.getUsuario(usuario.getLogin());
+			Sessao.setUsuario(verificaUsuario);
+			usuario = Sessao.getUsuario();
 			FacesContext.getCurrentInstance().getExternalContext().redirect("homeLogado.xhtml");
 		} else {
-			System.out.println("Não Passou");
-			FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
+			FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage("Alerta",  "Não existe esse usuário cadastrado") );
+			//FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
 		}
 
 	}
 
 	public void navBarPaginaInicial() throws IOException {
 		isLogado();
-		System.out.println(nomeDoUsuarioLogado);
 	}
 
 	public void navBarCardapio() throws IOException {
 		FacesContext.getCurrentInstance().getExternalContext().redirect("cardapio.xhtml");
 	}
 
-	public void navBarEntregas() throws IOException {
-		FacesContext.getCurrentInstance().getExternalContext().redirect("entregas.xhtml");
-	}
 
 	public void isLogado() throws IOException {
-		if (nomeDoUsuarioLogado != "") {
+		if (usuario.getNome() != null) {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("homeLogado.xhtml");
 		} else {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
@@ -57,27 +53,24 @@ public class TelaPrincipalBean {
 
 	public void sairDoSistema() throws IOException {
 		FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
-		nomeDoUsuarioLogado = "";
+		usuario = new Usuario();
+		Sessao.setUsuario(null);
 	}
 
 	public void teste() throws IOException {
-		FacesContext.getCurrentInstance().getExternalContext().redirect("homeLogado.xhtml");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("entregas.xhtml");
+		System.out.println("cavaloooooooooooo");
 	}
 
 	public Usuario getUsuario() {
+		if(this.usuario == null){
+			this.usuario = Sessao.usuario;
+		}
 		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public String getNomeDoUsuarioLogado() {
-		return nomeDoUsuarioLogado;
-	}
-
-	public void setNomeDoUsuarioLogado(String nomeDoUsuarioLogado) {
-		this.nomeDoUsuarioLogado = nomeDoUsuarioLogado;
 	}
 
 }
